@@ -11,18 +11,36 @@
 
     <div class="header">
         <div class="highscore_tab">View Highscores </div>
-        <div class="start_btn_div"><button id="home_btn" onclick="window.location.href = './index.html';">Home</button></div>
+        <div class="start_btn_div"><button id="home_btn" onclick= "window.location.href = './index.html';">Home</button></div>
         <div class="timer_tab">Time : <span id="Timer"></span></div>
     </div>
 
 
     <div class="container">
         <div class="card">
-            <div id="_question"></div>
-            <ul id = _Options>
-            </ul>
-            <div id = "answerStatus"></div>
+            <div class="userName_div">
+                <label >PlayerName &nbsp;: <input type="text" id="inputText" placeholder="Enter you Name"></label>                
+                <button id="playbtn">P L A Y</button>
+            </div>
+            <div class="question_block">
+                <div id="_question"></div>
+
+                <ul id = _Options>
+                </ul>
+    
+                <div id = "answerStatus">
+                    <hr style="display: none;">
+                    <p></p>
+                </div>
+            </div>
+           
+            <div id="redirect_buttons">                
+                <button onclick="window.location.href = './index.html';">Back To Quiz</button>
+                <button>Highscores</button>
+            </div>
+            <div class="highScores"></div>
         </div>
+        
     </div>
 
     <script src="./Question.js"></script>

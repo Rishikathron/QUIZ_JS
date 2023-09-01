@@ -52,7 +52,32 @@
 }
 
 /* ----------Question page styling----------- */
+/* .userName > *{
+    display: block;
+} */
 
+.userName_div>button{
+    
+    display: flex;
+    flex-flow: column;
+    padding : 0.5rem 1rem 0.5rem 1rem;
+    background-color: rgb(33,131,128);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    
+}
+
+#inputText{
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+#question_block{
+    display: none;
+}
 
 #_question{
     font-weight: bolder;  
@@ -76,4 +101,19 @@ li{
 
 #answerStatus{
     padding: 1rem;
+}
+
+#redirect_buttons{
+    display: flex;
+    justify-content: space-between;
+    display: none;
+}
+
+#redirect_buttons>button{
+    padding: 0.5rem;
+    background-color: rgb(33,131,128);
+    border-radius : 0.5rem;
+    border : none;
+    color: white;
+    margin-right: 1rem;
 }
