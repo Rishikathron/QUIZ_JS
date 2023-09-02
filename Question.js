@@ -6,14 +6,15 @@ var timer = document.getElementById('Timer');
 var card = document.getElementsByClassName('card');
 var scoreSheet = document.getElementById('score_sheet');
 var redirect_div = document.getElementById('redirect_buttons');
-
+var highScores_div = document.getElementById('highScores');
+var highscore_tab_btn = document.getElementById('highscore_tab');
 
 let remainingTime = 50;
 let Score = 0;
 let userName = "Anonymous";
 
 const questionsArr = [
-    {
+            {
               questionText: "1. Commonly used data types DO NOT include:",
               options: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
               answer: "3. alerts",
@@ -64,6 +65,7 @@ function getUserName(){
     console.log(userName);
 
     userNameDiv = document.getElementsByClassName('userName_div');
+
     console.log(userNameDiv);
     for (var i=0 ; i<userNameDiv.length ; i++){
         userNameDiv[i].style.display = "none";
@@ -89,7 +91,7 @@ function displayQuestion (){
     question.innerHTML = QuestionValues.questionText;
     QuestionValues.options.forEach(element => {
         var entry = document.createElement('li');  
-        entry.className = "ListOptions";    
+        // entry.className = "ListOptions";    
         entry.textContent = element;
         option_tag.append(entry);
     });
@@ -122,16 +124,10 @@ function  checkAnswer(actual_Answer) {
 }
 
 function displayAnswerStatus(Status){
-    //answerStatus.firstChild.style.display = "block";
     answerStatus.lastChild.textContent = Status;
     console.log(answerStatus);
     console.log(answerStatus.getElementsByTagName('hr').style);
-    answerStatus.getElementsByTagName('hr')[0].style.display = "block"
-    // var hr =  document.createElement('hr');
-    // var Paragraph = document.createElement('p');
-    // Paragraph.textContent = Status;
-    // answerStatus.append(hr);        
-    // answerStatus.appendChild(Paragraph);
+    answerStatus.getElementsByTagName('hr')[0].style.display = "block";    
 }
 
 function clearAnswerStatus(){
@@ -162,18 +158,31 @@ function gameOver(){
     question.style.fontSize = "2rem";
 
     var list_score = document.createElement('p').textContent = `Your Score : ${Score}`
+    
+    sessionStorage.setItem(userName,Score);
     option_tag.append(list_score);    
     redirect_div.style.display = "block"
-    remainingTime = 0;
+    remainingTime = 0;    
+}
 
-    
+function showHighScores(){
+    var players = Object.keys(sessionStorage);
+    players.forEach(item => {
+      var highscore_list = document.createElement('li').textContent = `${item} : ${sessionStorage.getItem(item)}`
+      highScores_div.append(highscore_list);
+    })
 }
 //--------starting function---------
 
 window.onload = function() {
-
+    console.log(highscore_tab_btn);
     var playbutton = document.getElementById('playbtn');
     playbutton.addEventListener('click',(e)=>{
         startQuiz();
     });    
 };
+  highscore_tab_btn.addEventListener('click',(e)=>{
+    console.log("clicked");
+    //console.log(Object.keys(sessionStorage));
+  showHighScores();
+});

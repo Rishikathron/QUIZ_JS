@@ -18,6 +18,10 @@
     color:white;
 }
 
+#highscore_tab{
+    cursor: pointer;
+}
+
 .container{
       
     display: flex; 
